@@ -1,0 +1,54 @@
+<div class="container">
+
+	<button mat-button color="primary" (click)="openDialog(null)">Adicionar</button>
+
+	<table mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
+
+		<ng-container matColumnDef="id">
+			<th mat-header-cell *matHeaderCellDef>Id</th>
+			<td mat-cell *matCellDef="let user"> {{user.id}} </td>
+		</ng-container>
+
+		<ng-container matColumnDef="nome">
+			<th mat-header-cell *matHeaderCellDef> Nome</th>
+			<td mat-cell *matCellDef="let user"> {{user.nome}} </td>
+		</ng-container>
+
+		<ng-container matColumnDef="sobrenome">
+			<th mat-header-cell *matHeaderCellDef>Sobrenome</th>
+			<td mat-cell *matCellDef="let user"> {{user.sobrenome}} </td>
+		</ng-container>
+
+		<ng-container matColumnDef="email">
+			<th mat-header-cell *matHeaderCellDef>Email</th>
+			<td mat-cell *matCellDef="let user"> {{user.email}} </td>
+		</ng-container>
+
+		<ng-container matColumnDef="dataNascimento">
+			<th mat-header-cell *matHeaderCellDef>Data Nascimento</th>
+			<td mat-cell *matCellDef="let user"> {{user.dataNascimento}} </td>
+		</ng-container>
+
+		<ng-container matColumnDef="escolaridade">
+			<th mat-header-cell *matHeaderCellDef>Escolaridade</th>
+			<td mat-cell *matCellDef="let user"> {{user.escolaridade}} </td>
+		</ng-container>
+
+
+		<ng-container matColumnDef="action">
+			<th mat-header-cell *matHeaderCellDef>Ações</th>
+			<td mat-cell *matCellDef="let user">
+				<button mat-icon-button>
+					<mat-icon (click)="editUser(user)">edit</mat-icon>
+				</button>
+				<button mat-icon-button>
+					<mat-icon (click)="deleteUser(user.id)">delete</mat-icon>
+				</button>
+			</td>
+		</ng-container>
+
+		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+	</table>
+</div>
